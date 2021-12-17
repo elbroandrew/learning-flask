@@ -7,7 +7,8 @@ app = Flask(__name__)
 def index():
     some_var = 'John'
     letters = list(some_var)
-    return render_template('index.html', my_var=some_var, letters=letters)
+    some_dict = {'name' : 'Andrew'}
+    return render_template('index.html', my_var=some_var, letters=letters, some_dict=some_dict)
 
 
 @app.route('/info')
