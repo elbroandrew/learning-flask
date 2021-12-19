@@ -5,8 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    user_logged_in = True
-    return render_template('index.html', user_logged_in=user_logged_in)
+    return render_template('home.html')
 
 
 @app.route('/info')
@@ -17,6 +16,11 @@ def info():
 @app.route('/info/<name>')
 def puppy_name(name):
     return "<h1>This is {}</h1>".format(name)
+
+
+@app.route('/puppy/<name>')
+def pup_name(name):
+    return render_template('puppy.html', name=name)
 
 
 if __name__ == '__main__':
