@@ -1,4 +1,4 @@
-## Falsk Udemy tutorial
+## Flask Udemy tutorial
 
 To run Flask app use `python main.py`
 
