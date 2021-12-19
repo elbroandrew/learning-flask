@@ -14,5 +14,10 @@
         <li>{{ letter }}</li>
         {% endfor %}
     </ul>
+{% if 'o' in letters %}
+    <p>"o" is in {{ letters }} </p>
+{% else %}
+    <p>"o" is not in letters</p>
+{% endif %}
 </body>
 </html>
