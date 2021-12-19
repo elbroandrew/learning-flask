@@ -9,5 +9,10 @@
   <h2>{{ letters }}</h2>
   <h2>{{ some_dict['name'] }}</h2>
   <img src="../static/m.jpg" alt="a beautiful pic">
+    <ul>
+        {% for letter in letters %}
+        <li>{{ letter }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
