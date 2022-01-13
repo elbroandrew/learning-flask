@@ -34,7 +34,7 @@ def xss_form():
 @app.route('/xss_response')
 def xss_response():
     first = request.args.get('first')
-    return render_template('xss-response.html', first=first)
+    return f"<div>{ first }</div>"
 
 
 @app.route('/thank_you')
