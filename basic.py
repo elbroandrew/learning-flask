@@ -1,30 +1,35 @@
-from flask import Flask, render_template, session, redirect, url_for, flash
-from flask_wtf import FlaskForm
-from wtforms import (StringField, SubmitField, BooleanField, DateField,
-                    RadioField, SelectField, StringField, TextAreaField)
-from wtforms.validators import DataRequired
+import os
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 
 
 app.config['SECRET_KEY'] = 'mysecretkey'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-class InfoForm(FlaskForm):
+db = SQLAlchemy(app)
 
-    breed = StringField("What breed are you?", validators=[DataRequired()])
-    submit = SubmitField('Submit')
+class Puppy(db.Model):
+
+    __tablename__ = 'puppies'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+    age = db.Column(db.Integer)
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        return f"Puppy {self.name} is {self.age} year/s old."
 
 @app.route('/', methods=['GET','POST'])
 def index():
-
-    form = InfoForm()
-
-    if form.validate_on_submit():
-        session['breed'] = form.breed.data
-        flash(f"You just clicked the submit button. The breed is {session['breed']}.")
-        
-
-    return render_template('index.html', form=form)
 
 
 if __name__ == '__main__':
