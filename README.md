@@ -12,7 +12,7 @@ For Flask `migrations` set up the env or you will get an error:
 
 Linux: `export FLASK_APP=app.py`
 
-Win: `set FLASK_APP=app.py`
+Win: `set FLASK_APP=app.py` or for PowerShell `$env:FLASK_APP="app.py"`
 
 then set up the migrations directory:
 
