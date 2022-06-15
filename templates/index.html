@@ -16,7 +16,7 @@
 
 {% for message in get_flashed_messages() %} <!-- это все флеш мессаджи возвращает -->
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    You should check in on some of those fields below. Breed: <strong> {{ form.breed.data }}.</strong> 
     <button type="button" data-dismiss="alert" aria-label="Close" class="fade close">
       <span aria-hidden="true">&times;</span>
     </button>

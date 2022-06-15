@@ -20,8 +20,9 @@ def index():
     form = InfoForm()
 
     if form.validate_on_submit():
-        flash("You just clicked the submit button.")
         session['breed'] = form.breed.data
+        flash(f"You just clicked the submit button. The breed is {session['breed']}.")
+        
 
     return render_template('index.html', form=form)
 
