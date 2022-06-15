@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 <p>
     {% if breed %}
     The breed you entered is "{{ breed }}".
@@ -8,7 +9,7 @@
 </p>
 
 <form method="POST">
-{{ form.hidden_tag() }}
-{{ form.breed.label }} {{ form.breed() }}
+{{ form.hidden_tag() }} <!--adds a cross-site request forgery token to protect our forms from attacks-->
+{{ form.breed.label }} {{ form.breed(class='form-class') }}
 {{ form.submit() }}
 </form>
