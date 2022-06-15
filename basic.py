@@ -30,6 +30,7 @@ class Puppy(db.Model):
 
 @app.route('/', methods=['GET','POST'])
 def index():
+    pass
 
 
 if __name__ == '__main__':
