@@ -26,16 +26,7 @@ def pup_name(name):
 @app.route('/signup_form')
 def signup_form():
     return render_template('signup.html')
-
-@app.route('/xss')
-def xss_form():
-    return render_template('xss-form.html')
-
-@app.route('/xss_response')
-def xss_response():
-    first = request.args.get('first')
-    return f"<div>{ first }</div>"
-
+    
 
 @app.route('/thank_you')
 def thank_you():

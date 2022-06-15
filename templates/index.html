@@ -1,16 +1,14 @@
-{% extends 'base.html' %}
-{% block content %}
-<div>
-    <p>Welcome</p>
-    <p>Sing up here:</p>
-    <a href="{{ url_for('signup_form') }}">Sign up</a>
-</div>
-{% endblock %}
+<p>
+    {% if breed %}
+    The breed you entered is "{{ breed }}".
+    Update it in the form below🧮:
+    {% else %}
+    Please enter your breed: 
+    {% endif %}
+</p>
 
-<img src="../static/m.jpg" alt="a beautiful pic">
-
-{% if user_logged_in %}
-    <p>Welcome to site!</p>
-{% else %}
-    <p>Please, log in.</p>
-{% endif %}
+<form method="POST">
+{{ form.hidden_tag() }}
+{{ form.breed.label }} {{ form.breed() }}
+{{ form.submit() }}
+</form>
