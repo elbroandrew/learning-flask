@@ -32,7 +32,7 @@ class Puppy(db.Model):
     # connect one puppy to one owner
     owner = db.relationship('Owner', backref='puppy', uselist=False)  # uselist is True by default.
 
-    def __init__(self, name, age, breed):
+    def __init__(self, name, age):
         self.name = name
         self.age = age
 
