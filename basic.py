@@ -17,6 +17,7 @@ db = SQLAlchemy(app)
 # after app and db 
 Migrate(app, db)
 
+# Models
 class Puppy(db.Model):
 
     __tablename__ = 'puppies'
@@ -24,15 +25,52 @@ class Puppy(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     age = db.Column(db.Integer)
-    breed = db.Column(db.Text)
+    # one to many
+    # puppy to many toys
+    toys = db.relationship('Toy', backref='puppy', lazy='dynamic')   # lazy - is how the data for relationship is loaded. Select - for separate tables load in two queries or more. Joined - to join tables in one query etc.
+    # one to one
+    # connect one puppy to one owner
+    owner = db.relationship('Owner', backref='puppy', uselist=False)  # uselist is True by default.
 
     def __init__(self, name, age, breed):
         self.name = name
         self.age = age
-        self.breed = breed
 
     def __repr__(self):
-        return f"Puppy {self.name} is {self.age} year/s old."
+        if self.owner:
+            return f"Puppy {self.name} and owner is {self.owner.name}."
+        else:
+            return f"Puppy {self.name} has no owner yet!"
+
+    def report_toys(self):
+        for toy in self.toys:
+            print(toy.item_name)
+
+
+class Toy(db.Model):
+    __tablename__ = 'toys'
+
+    id = db.Column(db.Integer, primary_key=True)
+    item_name = db.Column(db.Text)
+    puppy_id = db.Column(db.Integer, db.ForeignKey('puppies.id'))
+
+    def __init__(self, item_name, puppy_id):
+        self.item_name = item_name
+        self.puppy_id = puppy_id
+
+
+class Owner(db.Model):
+    __tablename__ = 'owners'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+    puppy_id = db.Column(db.Integer, db.ForeignKey('puppies.id'))
+
+    def __init__(self):
+        self.name = name
+        self.puppy_id = puppy_id
+
+
 
 @app.route('/', methods=['GET','POST'])
 def index():

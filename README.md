@@ -25,3 +25,6 @@ setup the migration file:
 update the db:
 
 `flask db upgrade`
+To create the db run `python setupdatabase.py`
+
+then run the main file.
