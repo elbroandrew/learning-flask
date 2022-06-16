@@ -1,6 +1,4 @@
-from unicodedata import name
 from basic import db, Puppy, Owner, Toy
-
 
 
 rufus = Puppy('Rufus', 2)
