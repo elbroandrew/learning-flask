@@ -14,6 +14,8 @@ Linux: `export FLASK_APP=app.py`
 
 Win: `set FLASK_APP=app.py` or for PowerShell `$env:FLASK_APP="app.py"`
 
+To create the db run `python setupdatabase.py`
+
 then set up the migrations directory:
 
 `flask db init`
@@ -25,6 +27,3 @@ setup the migration file:
 update the db:
 
 `flask db upgrade`
-To create the db run `python setupdatabase.py`
-
-then run the main file.
