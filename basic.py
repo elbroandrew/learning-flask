@@ -43,6 +43,7 @@ class Puppy(db.Model):
             return f"Puppy {self.name} has no owner yet!"
 
     def report_toys(self):
+        print(f"{self.name} toys: ")
         for toy in self.toys:
             print(toy.item_name)
 
@@ -66,7 +67,7 @@ class Owner(db.Model):
     name = db.Column(db.Text)
     puppy_id = db.Column(db.Integer, db.ForeignKey('puppies.id'))
 
-    def __init__(self):
+    def __init__(self, name, puppy_id):
         self.name = name
         self.puppy_id = puppy_id
 
