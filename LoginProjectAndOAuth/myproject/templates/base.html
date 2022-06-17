@@ -11,7 +11,7 @@
     <title>Flask Login Tutorial</title>
 </head>
 <body>
-    <ul>
+    <ul class="nav">
         <li class="nav-link"><a href="{{ url_for('home') }}">Home</a></li>
         {% if current_user.is_authenticated %}
         <li class="nav-link"><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -19,7 +19,9 @@
         <li class="nav-link"><a href="{{ url_for('login') }}">Login</a></li>
         <li class="nav-link"><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
-    </ul>   
+    </ul>
+    {% block content %}
+    {% endblock %}   
 
 </body>
 </html>
