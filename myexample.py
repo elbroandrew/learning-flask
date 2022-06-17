@@ -1,15 +1,9 @@
-from flask_bcrypt import Bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
 
-bcrypt = Bcrypt()
+hashed_pass = generate_password_hash('mypassword')
+# print(hashed_pass)
 
-password = 'supersecretpassword'
+check = check_password_hash(hashed_pass, 'mypassword')
 
-hashed_password = bcrypt.generate_password_hash(password=password)
-
-# print(hashed_password)
-
-# check password
-check = bcrypt.check_password_hash(hashed_password, 'wrongpassword')
-print(check) # False, wrongpassword != supersecretpassword
 
 
