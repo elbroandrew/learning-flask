@@ -27,3 +27,5 @@ setup the migration file:
 update the db:
 
 `flask db upgrade`
+
+run `py adoption_site.py`
