@@ -57,7 +57,13 @@ def register():
         flash("Thanks for registration!")
         return redirect(url_for('login'))
     
+    if form.errors:  # only true if there were errors during validation by WTForms
+        for field, error in form.errors.items():           
+            flash(f"Error for {field}: {', '.join(error)}", category='error')
+    
     return render_template('register.html', form=form)
+
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
