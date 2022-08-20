@@ -1,44 +1,24 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, g as app_ctx
+import time
 
 app = Flask(__name__)
 
+@app.before_request
+def start_time():
+    app_ctx.start_time = time.perf_counter()
+
+@app.after_request
+def count_request_time(response):
+    total_time = time.perf_counter() - app_ctx.start_time
+    time_in_ms = int(total_time * 1000)
+    print(f"REQUEST TIME: {total_time}")
+    return response
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    time.sleep(1)
+    return jsonify({'Hello': 'World!!'})
 
-
-@app.route('/info')
-def info():
-    return "<h1>Puppies are cute</h1>"
-
-
-@app.route('/info/<name>')
-def puppy_name(name):
-    return "<h1>This is {}</h1>".format(name)
-
-
-@app.route('/puppy/<name>')
-def pup_name(name):
-    return render_template('puppy.html', name=name)
-
-
-@app.route('/signup_form')
-def signup_form():
-    return render_template('signup.html')
-    
-
-@app.route('/thank_you')
-def thank_you():
-    first = request.args.get('first')
-    last = request.args.get('last')
-
-    return render_template('thankyou.html', first=first, last=last)
-
-
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
