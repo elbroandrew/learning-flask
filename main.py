@@ -25,8 +25,8 @@ def page():
     res = make_response("SETTING a COOKIE")
     res.set_cookie('foo', 'bar', max_age=60*60)
     session['my_text'] = 123
-    #return f"{session.get('my_text')}"
-    return session
+    return f"{session.get('my_text')}"
+    
 
 
 
