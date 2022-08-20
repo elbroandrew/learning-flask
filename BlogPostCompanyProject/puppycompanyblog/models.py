@@ -33,7 +33,7 @@ class User(db.Model, UserMixin):
         return f"USername {self.username}"
 
 
-class BlogPost():
+class BlogPost(db.Model):
     users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key=True)
