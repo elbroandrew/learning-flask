@@ -12,3 +12,6 @@ init DB (before that delete any existing DB and migrations folder):
 `flask db migrate -m "some message here"`
 
 `flask db upgrade`
+
+run flask app on win10:
+`py app.py`
