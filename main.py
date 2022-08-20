@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, g as app_ctx, redire
 import time
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "secret key"
 
 @app.before_request
 def start_time():
@@ -23,9 +24,9 @@ def index():
 def page():
     res = make_response("SETTING a COOKIE")
     res.set_cookie('foo', 'bar', max_age=60*60)
-    #session['my_text'] = 123
+    session['my_text'] = 123
     #return f"{session.get('my_text')}"
-    return res
+    return session
 
 
 
