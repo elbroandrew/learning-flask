@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, g as app_ctx
+from flask import Flask, render_template, request, jsonify, g as app_ctx, redirect
 import time
 
 app = Flask(__name__)
@@ -17,7 +17,12 @@ def count_request_time(response):
 @app.route("/")
 def index():
     time.sleep(1)
-    return jsonify({'Hello': 'World!!'})
+    return redirect("/page1", code=302)
+
+
+@app.route("/page1")
+def page():
+    return "PAGE_1"
 
 
 
