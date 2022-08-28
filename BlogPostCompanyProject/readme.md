@@ -5,6 +5,10 @@ then set up the FLASK_APP var for win 10:
 
 `$env:FLASK_APP="app.py"`
 
+linux:
+
+`export FLASK_APP=app.py`
+
 init DB (before that delete any existing DB and migrations folder):
 
 `flask db init`
@@ -15,3 +19,6 @@ init DB (before that delete any existing DB and migrations folder):
 
 run flask app on win10:
 `py app.py`
+
+linux:
+`python3 app.py`
