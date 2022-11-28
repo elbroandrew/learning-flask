@@ -12,7 +12,8 @@ class Config:
     __slots__ = [
         "_path",
         "DEBUG",
-        "SECRET_KEY"
+        "SECRET_KEY",
+        'SQLALCHEMY_TRACK_MODIFICATIONS'
     ]
 
     def __init__(self, yaml_file_path: str) -> None:
