@@ -1,4 +1,6 @@
 import os
+from pprint import pprint
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -60,3 +62,5 @@ app.register_blueprint(users)
 app.register_blueprint(blog_posts)
 app.register_blueprint(core)
 app.register_blueprint(error_pages)
+
+pprint(app.url_map)
