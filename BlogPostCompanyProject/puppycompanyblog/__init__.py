@@ -3,6 +3,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from config import Config
+from constants import CONFIG_FILE_PATH
+
+config = Config(yaml_file_path=CONFIG_FILE_PATH)
 
 app = Flask(__name__)
 
@@ -14,7 +18,8 @@ app = Flask(__name__)
 # when you deploy this to a real website.
 # export SECRET_KEY=mysecret
 # set SECRET_KEY=mysecret
-app.config['SECRET_KEY'] = 'mysecret'
+app.config.from_object(config)
+#app.config['SECRET_KEY'] = 'mysecret'
 
 #################################
 ### DATABASE SETUPS ############

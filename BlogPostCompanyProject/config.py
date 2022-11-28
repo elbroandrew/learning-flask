@@ -11,7 +11,8 @@ class Config:
 
     __slots__ = [
         "_path",
-        "DEBUG"
+        "DEBUG",
+        "SECRET_KEY"
     ]
 
     def __init__(self, yaml_file_path: str) -> None:
