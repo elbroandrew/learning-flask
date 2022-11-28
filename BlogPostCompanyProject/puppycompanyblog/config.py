@@ -2,6 +2,11 @@ import os.path
 
 import yaml
 
+"""
+from https://www.youtube.com/watch?v=bA8RBBboApI tutorial
+"""
+
+
 class Config:
 
     __slots__ = [
