@@ -1,7 +1,5 @@
 ## Puppy blog posts project
-go into BlogPostCompanyProject from main directory of the repo: `cd BlogPostCompanyProject`
-
-then set up the FLASK_APP var for win 10:
+set up the FLASK_APP var for win 10:
 
 `$env:FLASK_APP="app.py"`
 
