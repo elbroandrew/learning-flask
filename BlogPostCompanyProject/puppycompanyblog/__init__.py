@@ -22,7 +22,7 @@ app = Flask(__name__)
 # export SECRET_KEY=mysecret
 # set SECRET_KEY=mysecret
 app.config.from_object(config)
-#app.config['SECRET_KEY'] = 'mysecret'
+# app.config['SECRET_KEY'] = 'mysecret'
 
 # logging
 logger = logging.getLogger("main")
@@ -36,7 +36,6 @@ fh.setLevel(logging.DEBUG)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 fh.setFormatter(formatter)
 logger.addHandler(fh)
-
 
 #################################
 ### DATABASE SETUPS ############
