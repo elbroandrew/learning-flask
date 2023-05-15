@@ -1,6 +1,0 @@
----
-
-debug: true
-secret_key: 'mysecret'
-sqlalchemy_track_modifications: false
-#sqlalchemy_database_uri: 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
